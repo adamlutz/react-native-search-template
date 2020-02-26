@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import SearchBar from '../components/SearchBar';
 
+// fetch() is built-in to react, however requires more config +
+// error handling compared to axios.
+
 const SearchScreen = () => {
   const [term, setTerm] = useState('');
 
