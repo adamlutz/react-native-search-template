@@ -21,7 +21,7 @@ const SearchScreen = () => {
   return (
 
     // a lot of styles can be solved w/ flex 1 of most parent view in android
-    <View style={{ flex: 1, borderColor: 'red', borderWidth: 10}}>
+    <View style={{ flex: 1 }}>
       <SearchBar term={term}
         onTermChange={newTerm => setTerm(newTerm)}
         onTermSubmit={() => searchApi(term)}
