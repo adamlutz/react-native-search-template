@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { withNavigation } from 'react-navigation';
 import ResultsDetail from './ResultsDetail';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
@@ -41,4 +42,5 @@ const styles = StyleSheet.create({
   }
 })
 
-export default ResultsList
+// special version w/ access to navigation
+export default withNavigation(ResultsList);

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import { Text, ScrollView } from 'react-native';
 import SearchBar from '../components/SearchBar';
 import useResults from '../hooks/useResults'
 import ResultsList from '../components/ResultsList';
@@ -7,7 +7,7 @@ import ResultsList from '../components/ResultsList';
 // fetch() is built-in to react, however requires more config +
 // error handling compared to axios.
 
-const SearchScreen = ({ navigation }) => {
+const SearchScreen = () => {
   const [term, setTerm] = useState('');
   const [searchApi, results, errorMessage] = useResults();
 
@@ -35,17 +35,14 @@ const SearchScreen = ({ navigation }) => {
       <ScrollView>
         <ResultsList
           results={filterResultsByPrice('$$$')}
-          navigation={navigation}
           title='Spendy'/>
 
         <ResultsList
           results={filterResultsByPrice('$$')}
-          navigation={navigation}
           title='Bit pricier'/>
 
         <ResultsList
           results={filterResultsByPrice('$$$')}
-          navigation={navigation}
           title='cheap' />
 
       </ScrollView>
