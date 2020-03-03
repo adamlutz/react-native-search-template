@@ -21,7 +21,10 @@ const SearchScreen = () => {
   return (
 
     // a lot of styles can be solved w/ flex 1 of most parent view in android
-    <View style={{ flex: 1 }}>
+    // <View style={{ flex: 1 }}
+    // another approach is to add an empty element
+    // when a <view> element would harm layout overall
+    <>
       <SearchBar term={term}
         onTermChange={newTerm => setTerm(newTerm)}
         onTermSubmit={() => searchApi(term)}
@@ -29,13 +32,12 @@ const SearchScreen = () => {
       />
       {errorMessage ? <Text>{errorMessage}</Text> : null}
 
-      <Text>{results.length} results</Text>
       <ScrollView>
         <ResultsList results={filterResultsByPrice('$$$')} title='Spendy'/>
         <ResultsList results={filterResultsByPrice('$$')} title='Bit pricier'/>
         <ResultsList results={filterResultsByPrice('$$$')} title='cheap' />
       </ScrollView>
-    </View>
+    </>
   )
 }
 
