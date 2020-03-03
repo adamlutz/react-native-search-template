@@ -7,7 +7,7 @@ import ResultsList from '../components/ResultsList';
 // fetch() is built-in to react, however requires more config +
 // error handling compared to axios.
 
-const SearchScreen = () => {
+const SearchScreen = ({ navigation }) => {
   const [term, setTerm] = useState('');
   const [searchApi, results, errorMessage] = useResults();
 
@@ -33,9 +33,21 @@ const SearchScreen = () => {
       {errorMessage ? <Text>{errorMessage}</Text> : null}
 
       <ScrollView>
-        <ResultsList results={filterResultsByPrice('$$$')} title='Spendy'/>
-        <ResultsList results={filterResultsByPrice('$$')} title='Bit pricier'/>
-        <ResultsList results={filterResultsByPrice('$$$')} title='cheap' />
+        <ResultsList
+          results={filterResultsByPrice('$$$')}
+          navigation={navigation}
+          title='Spendy'/>
+
+        <ResultsList
+          results={filterResultsByPrice('$$')}
+          navigation={navigation}
+          title='Bit pricier'/>
+
+        <ResultsList
+          results={filterResultsByPrice('$$$')}
+          navigation={navigation}
+          title='cheap' />
+
       </ScrollView>
     </>
   )
