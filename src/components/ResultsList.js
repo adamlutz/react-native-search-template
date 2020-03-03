@@ -7,6 +7,10 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 //const ResultsList = (props) => {  is actually this, but destructure
 const ResultsList = ({title, results, navigation}) => {
+
+  if (!results.length) {
+    return null;
+  }
   return (
     <View style={styles.container}>
       <Text style={styles.titleStyle}>{title}</Text>
