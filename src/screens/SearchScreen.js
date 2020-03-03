@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, ScrollView } from 'react-native';
 import SearchBar from '../components/SearchBar';
 import useResults from '../hooks/useResults'
 import ResultsList from '../components/ResultsList';
@@ -19,7 +19,9 @@ const SearchScreen = () => {
   }
 
   return (
-    <View>
+
+    // a lot of styles can be solved w/ flex 1 of most parent view in android
+    <View style={{ flex: 1, borderColor: 'red', borderWidth: 10}}>
       <SearchBar term={term}
         onTermChange={newTerm => setTerm(newTerm)}
         onTermSubmit={() => searchApi(term)}
@@ -28,10 +30,11 @@ const SearchScreen = () => {
       {errorMessage ? <Text>{errorMessage}</Text> : null}
 
       <Text>{results.length} results</Text>
-      <ResultsList results={filterResultsByPrice('$$$')} title='Spendy'/>
-      <ResultsList results={filterResultsByPrice('$$')} title='Bit pricier'/>
-      <ResultsList results={filterResultsByPrice('$$$')} title='cheap' />
-
+      <ScrollView>
+        <ResultsList results={filterResultsByPrice('$$$')} title='Spendy'/>
+        <ResultsList results={filterResultsByPrice('$$')} title='Bit pricier'/>
+        <ResultsList results={filterResultsByPrice('$$$')} title='cheap' />
+      </ScrollView>
     </View>
   )
 }

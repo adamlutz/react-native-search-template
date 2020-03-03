@@ -6,7 +6,7 @@ import { View, Image, Text, StyleSheet, FlatList } from 'react-native';
 // images will be empty/hidden by default, unless a style is applied
 const ResultsDetail = ({result}) => {
   return (
-    <View>
+    <View style={styles.container}>
       <Text>{result.name}</Text>
       <Image style={styles.imageStyle} source={{ uri: result.image_url}} />
       <Text>{result.rating} Stars, {result.review_count} Reviews</Text>
@@ -15,6 +15,9 @@ const ResultsDetail = ({result}) => {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    marginLeft: 15
+  },
   titleStyle: {
     fontSize: 18,
     fontWeight: 'bold',
@@ -22,7 +25,8 @@ const styles = StyleSheet.create({
   imageStyle : {
     width: 250,
     height: 120,
-    borderRadius: 4
+    borderRadius: 4,
+    marginBottom: 5
   }
 })
 
